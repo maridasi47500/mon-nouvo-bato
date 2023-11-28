@@ -106,6 +106,8 @@ class Route():
         if path and path.endswith("jpg"):
             self.Program=Pic(path)
             self.Program.set_path("./")
+        elif path and path.endswith(".png"):
+            self.Program=Pic(path)
         elif path and path.endswith(".jfif"):
             self.Program=Pic(path)
         elif path and path.endswith(".css"):
