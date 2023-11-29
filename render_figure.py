@@ -58,7 +58,7 @@ class RenderFigure():
                     continue
 
                 k=j.split("%>")
-                loc={"paspremier":paspremier,as_: x,"index":i,  "params": self.params}
+                loc={"render_collection":self.render_collection,"paspremier":paspremier,as_: x,"index":i,  "params": self.params}
                 print(k[0], "content render")
                 l=exec("myvalue="+k[0], globals(), loc)
                 mystr+=str(loc["myvalue"])

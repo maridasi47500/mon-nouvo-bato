@@ -1,4 +1,53 @@
-<div id="myid"><%=params["myid"]%></div>
+
 <div id="mytext" hidden></div>
-<textarea id="mytextarea" name="">
+<form id="myform" action="/codehtml" method="post">
+	<div class="champ">
+		<label for="filename">file name</label>
+<input id="filename" name="filename"/>
+	</div>
+	<div class="champ">
+		<label for="mytextarea">code html</label>
+<textarea id="mytextarea" name="mytextarea">
 </textarea>
+	</div>
+	<div class="actions">
+	<input type="submit" value="&#x1F4BE;" name="envoyer" id="valider"/>
+	</div>
+</form>
+<h5>upload a pic</h5>
+<form id="mypic" action="/pic" method="post">
+	<div class="champ">
+		<label for="filename">file name</label>
+<input type="file" id="filename" name="filename"/>
+	</div>
+	<div class="actions">
+<input id="upload" type="submit" name="uploaderimage" value="uploader 1 image"/>
+	</div>
+</form>
+<h5>Balises</h5>
+<table>
+	<%=render_collection(collection=params['tags'], partial='welcome/_tagligne.html', as_='tag')%>
+	<tr>
+		<td>
+<a class="mylinks" href="javascript:void(0)" data-begin="<html>" data-end="</html>">balise html</a>
+		</td>
+		<td>
+<a class="mylinks" href="javascript:void(0)" data-begin="<div>" data-end="</div>">balise div</a>
+		</td>
+		<td>
+<a class="mylinks" href="javascript:void(0)" data-begin="<a>" data-end="</a>">balise a</a>
+		</td>
+
+	</tr>
+
+</table>
+<h5>css proprietes</h5>
+<table>
+	<%=render_collection(collection=params['cssproprietes'], partial='welcome/_cssligne.html', as_='css')%>
+</table>
+<h5 id="imagetitle" style="display:none;">images</h5>
+<div id="imagetable">
+
+</div>
+
+

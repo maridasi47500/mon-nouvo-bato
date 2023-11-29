@@ -1,8 +1,6 @@
 from directory import Directory
 from render_figure import RenderFigure
-from program import Program
-from centrale import Centrale
-from machinealaver import Machinealaver
+from fichier import Fichier
 
 from mypic import Pic
 from javascript import Js
@@ -13,12 +11,9 @@ import sys
 
 class Route():
     def __init__(self):
-        self.Program=Directory("Ma laverie")
+        self.Program=Directory("Mon bato")
         self.Program.set_path("./")
         self.mysession={"notice":None,"email":None,"name":None}
-        self.dbCentrale=Centrale()
-        self.dbProgram=Program()
-        self.dbMachinealaver=Machinealaver()
         self.render_figure=RenderFigure(self.Program)
         self.getparams=("id",)
     def set_post_data(self,x):
@@ -54,38 +49,31 @@ class Route():
         self.Program.logout()
         self.set_redirect("/")
         return self.render_figure.render_redirect()
-    def machinealaver(self,search):
-        myparam=self.get_post_data()(params=("myid",))
-        myid=myparam["myid"]
-        print("hey")
-        centrale=self.dbCentrale.getbyid(myid)
-        print("centrale")
-        print("machinealaver",centrale)
-        machinealaver=self.dbMachinealaver.getallbycentraleid(myid)
-
-        print("machinealaver",machinealaver)
-        self.render_figure.set_param("centrale",centrale)
-        self.render_figure.set_param("machinealaver",machinealaver)
-        return self.render_some_json("welcome/machinealaver.json")
-    def voirtouteslesmachinealaver(self,search):
-        try:
-            print(search["myid"])
-            myid=search["myid"][0]
-        except:
-            myid=None
-        print("hey",myid)
-        centrale=self.dbCentrale.getbyid(myid)
-        print("centrale")
-        machinealaver=self.dbMachinealaver.getallbycentraleid(myid)
-        print("machinealaver")
-        print(centrale)
-        print(machinealaver)
-        self.render_figure.set_param("myid",myid)
-        self.render_figure.set_param("centrale",centrale)
-        print("cdntrale")
-        self.render_figure.set_param("machinealaver",machinealaver)
-        self.json=True
-        print("machine a lavercdntrale")
+    def codehtml(self,search):
+        myparam=self.get_post_data()(params=("filename","mytextarea"))
+        print("tags")
+        x=Fichier("./mespages",myparam["filename"]).ecrire(myparam["mytextarea"])
+        self.set_json("{\"redirect\":false,\"ecritfichier\":true}")
+        return self.render_figure.render_json()
+    def pic(self,search):
+        myparam=self.get_post_data()(params=("filename",))
+        print("tags",myparam)
+        print("{\"pic\":\""+(myparam["filename"])+"\"}")
+        self.set_json("{\"pic\":\""+(myparam["filename"])+"\"}")
+        return self.render_figure.render_json()
+    def welcome(self,search):
+        tags=[
+                ["div","html","footer"],
+                ["header","nav"]
+                ]
+        css=[
+                ["display","color","background"],
+                ["margin","padding"]
+                ]
+        print(tags)
+        self.render_figure.set_param("tags",tags)
+        self.render_figure.set_param("cssproprietes",css)
+        print("tags")
         return self.render_figure.render_figure("welcome/index.html")
     def run(self,redirect=False,redirect_path=False,path=False,session=False,params={},url=False,post_data=False):
         if post_data:
@@ -118,9 +106,9 @@ class Route():
             path=path.split("?")[0]
             print("link route ",path)
             ROUTES={
-
-                    '^/machinealaver$': self.machinealaver,
-                    '^/$': self.voirtouteslesmachinealaver,
+                    '^/pic$': self.pic,
+                    '^/codehtml$': self.codehtml,
+                    '^/$': self.welcome,
 
                     }
             REDIRECT={"/save_user": "/welcome"}

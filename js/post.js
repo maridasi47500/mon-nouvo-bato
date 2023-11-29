@@ -24,8 +24,19 @@ return false;
 	    console.log(JSON.stringify(data.redirect))
 	    if (data.redirect){
 	    window.location=data.redirect;
-	    }else{
-	    window.location="/welcome";
+	    }
+	    if (data.ecritfichier){
+		    alert("le programme a écrit le code dans 1 fichier")
+	    
+	    }
+	    if (data.pic){
+		   $("#imagetitle").show();
+		   $("#imagetable").append(` <span>
+			    <a class="mylinks" onclick="" href="javascript:void(0)" data-begin="\<img src='/uploads/${data.pic}' width='100' height='100' alt='${data.pic}' />" data-end=""><img src="/uploads/${data.pic}" width="100" height="100" alt="${data.pic}" />${data.pic}</a>
+			                    </span>
+					    `)
+
+	    
 	    }
 },
     xhr: function () {
