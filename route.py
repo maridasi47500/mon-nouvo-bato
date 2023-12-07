@@ -9,6 +9,7 @@ import re
 import traceback
 import sys
 
+
 class Route():
     def __init__(self):
         self.Program=Directory("Mon bato")
@@ -75,6 +76,18 @@ class Route():
         self.render_figure.set_param("cssproprietes",css)
         print("tags")
         return self.render_figure.render_figure("welcome/index.html")
+    def voirprogrammes(self,route):
+        fichier=Fichier().listeProgrammes()
+        self.render_figure.set_param("fichier",fichier)
+        return self.render_figure.render_figure("welcome/fichier.html")
+    def voirfichier(self,route):
+        fichier=Fichier().listeProgrammes()
+        hey=self.get_this_route_param(("id",),route)
+        nomfichier=fichier[()]
+       
+        self.render_figure.set_param("nom",hey)
+        self.render_figure.set_param("fichier",fichier)
+        return self.render_figure.render_figure("welcome/fichier.html")
     def run(self,redirect=False,redirect_path=False,path=False,session=False,params={},url=False,post_data=False):
         if post_data:
             print("post data")
@@ -107,7 +120,9 @@ class Route():
             print("link route ",path)
             ROUTES={
                     '^/pic$': self.pic,
+                    '^/fichier/\d+$': self.voirfichier,
                     '^/codehtml$': self.codehtml,
+                    '^/voirprogrammes$': self.voirprogrammes,
                     '^/$': self.welcome,
 
                     }

@@ -3,7 +3,7 @@
 <form id="myform" action="/codehtml" method="post">
 	<div class="champ">
 		<label for="filename">file name</label>
-<input id="filename" name="filename"/>
+		<input id="filename" name="filename" oninvalid="setCustomValidity('nommer votre programme programme.rb ou programme.php, program.py, ou program.html')" pattern="^[a-zA-Z1-9_\-]*.{1}(html|py|rb|php)$" required oninput="setCustomValidity('')" />
 	</div>
 	<div class="champ">
 		<label for="mytextarea">code html</label>

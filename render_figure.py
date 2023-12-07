@@ -52,6 +52,7 @@ class RenderFigure():
         i=0
         paspremier=False
         for x in collection:
+
             for j in myview.split("<%="):
                 if "%>" not in j:
                     mystr+=j
