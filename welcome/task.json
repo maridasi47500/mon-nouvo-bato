@@ -1,0 +1,1 @@
+{"title":"<%=params["item"]["title"]%>", "content": "<%=params["item"]["content"]%>"}

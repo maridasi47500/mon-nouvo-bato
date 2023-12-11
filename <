@@ -1,7 +1,6 @@
 from directory import Directory
 from render_figure import RenderFigure
 from fichier import Fichier
-import random
 
 from mypic import Pic
 from javascript import Js
@@ -19,8 +18,6 @@ class Route():
         self.Program.set_path("./")
         self.mysession={"notice":None,"email":None,"name":None}
         self.render_figure=RenderFigure(self.Program)
-        self.dbTask=Task()
-        self.dbTip=Tip()
         self.getparams=("id",)
     def set_post_data(self,x):
         self.post_data=x
@@ -97,20 +94,6 @@ class Route():
         self.render_figure.set_param("nom",nom)
         self.render_figure.set_param("fichier",content)
         return self.render_figure.render_figure("welcome/monfichier.html")
-    def gettasks(self,route):
-        print("ok")
-        items=self.dbTask.getall()
-        item=random.choice(items) 
-        print(item)
-        self.render_figure.set_param("item",item)
-        return self.render_some_json("welcome/task.json")
-    def gettips(self,route):
-        print("ok")
-        items=self.dbTip.getall()
-        item=random.choice(items) 
-        print(item)
-        self.render_figure.set_param("item",item)
-        return self.render_some_json("welcome/task.json")
     def run(self,redirect=False,redirect_path=False,path=False,session=False,params={},url=False,post_data=False):
         if post_data:
             print("post data")
@@ -142,8 +125,6 @@ class Route():
             path=path.split("?")[0]
             print("link route ",path)
             ROUTES={
-                    '^/gettips$': self.gettips,
-                    '^/gettasks$': self.gettasks,
                     '^/pic$': self.pic,
                     '^/fichier/(\d+)$': self.voirfichier,
                     '^/codehtml$': self.codehtml,

@@ -1,33 +1,4 @@
-function on() {
-	  document.getElementById("overlay").style.display = "block";
-}
-
-function off() {
-	  document.getElementById("overlay").style.display = "none";
-}
 $(function(){
-	$("#mytip").click(function(){
-		var myicon=$(this);
-		$.ajax({
-			url: "/gettips",
-			success:function(data){
-				$("#my-title").html(myicon[0].firstChild.alt+" "+data.title);
-				$("#my-content").html(data.content);
-	  document.getElementById("overlay").style.display = "block";
-			}
-		});
-	});
-	$("#mytask").click(function(){
-		var myicon=$(this);
-		$.ajax({
-			url: "/gettasks",
-			success:function(data){
-				$("#my-title").html(myicon[0].firstChild.alt+" "+data.title);
-				$("#my-content").html(data.content);
-	  document.getElementById("overlay").style.display = "block";
-			}
-		});
-	});
 var monciseau=document.getElementById("monciseau");
 var mesfeuilles=document.getElementById("mesfeuilles");
 var mafeuille=document.getElementById("mafeuille");
