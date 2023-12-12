@@ -32,7 +32,7 @@ return false;
 	    if (data.pic){
 		   $("#imagetitle").show();
 		   $("#imagetable").append(` <span>
-			    <a class="mylinks" onclick="" href="javascript:void(0)" data-begin="\<img src='/uploads/${data.pic}' width='100' height='100' alt='${data.pic}' />" data-end=""><img src="/uploads/${data.pic}" width="100" height="100" alt="${data.pic}" />${data.pic}</a>
+			    <a class="mylinks" onclick="" href="javascript:void(0)" data-begin="\<img src='/uploads/${data.pic}' width='100' height='100' alt='${data.pic}' />" data-end=""><img src="/uploads/${data.pic}" width="100" height="100" alt="${data.pic}" />${data.pic}</a><span class="mesfeuilles" onclick="mytext.innerHTML='${data.pic}';" title="copier le nom"><img alt="&#128464;" src="/uploads/feuille.png"/></span>
 			                    </span>
 					    `)
 

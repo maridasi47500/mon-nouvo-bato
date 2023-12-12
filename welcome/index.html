@@ -1,4 +1,5 @@
-
+<div class="myhtml">
+	<div class="left">
 <div id="mytext" hidden></div>
 <form id="myform" action="/codehtml" method="post">
 	<div class="champ">
@@ -9,11 +10,24 @@
 		<label for="mytextarea">code html</label>
 <textarea id="mytextarea" name="mytextarea">
 </textarea>
+<textarea id="mytextareacss" name="mytextareacss">
+</textarea>
+<button id="codecss" name="codecss">
+	code css pour les images 
+</button>
+	<div class="mytextareas">
+	</div>
 	</div>
 	<div class="actions">
 	<input type="submit" value="&#x1F4BE;" name="envoyer" id="valider"/>
 	</div>
 </form>
+<div>
+	<input type="range" id="mycss" min="0" max="100"/>
+<button id="ajouter" name="ajoutercodecss">
+	ajouter à 50% une rotation et translation
+</button>
+</div>
 <h5>upload a pic</h5>
 <form id="mypic" action="/pic" method="post">
 	<div class="champ">
@@ -45,9 +59,17 @@
 <table>
 	<%=render_collection(collection=params['cssproprietes'], partial='welcome/_cssligne.html', as_='css')%>
 </table>
+<h5>html attributes</h5>
+<table>
+	<%=render_collection(collection=params['attributes'], partial='welcome/_attrligne.html', as_='attributes')%>
+</table>
 <h5 id="imagetitle" style="display:none;">images</h5>
 <div id="imagetable">
 
+</div>
+</div>
+<div class="right">
+</div>
 </div>
 
 

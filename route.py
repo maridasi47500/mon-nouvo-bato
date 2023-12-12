@@ -76,9 +76,14 @@ class Route():
                 ["display","color","background"],
                 ["margin","padding"]
                 ]
+        attr=[
+                ["src","href"],
+                ["id","name","value"]
+                ]
         print(tags)
         self.render_figure.set_param("tags",tags)
         self.render_figure.set_param("cssproprietes",css)
+        self.render_figure.set_param("attributes",attr)
         print("tags")
         return self.render_figure.render_figure("welcome/index.html")
     def voirprogrammes(self,route):
