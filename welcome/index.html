@@ -10,9 +10,9 @@
 		<label for="mytextarea">code html</label>
 <textarea id="mytextarea" name="mytextarea">
 </textarea>
-<textarea id="mytextareacss" name="mytextareacss">
+<textarea id="mytextareacss" name="mytextareacss" oninvalid="setCustomValidity('écris un code comme :\n#hey {\nanimation-name: wow;\nanimation-duration: 10s;\n}\n@keyframes wow {\n50% {transform: translate(2px,7px) rotate(10deg);}\n90% {transform: translate(2px,7px) rotate(10deg);}\n}')" pattern="^([#.][a-zA-Z0-9 ]*[{](\s)?(animation-name:)(\s)?[a-zA-Z0-9]*[;](\s)?(animation-duration:)(\s)?(\d+)(s)[;](\s)?[}](\s)?(@keyframes)(\s)?[a-zA-Z0-9 ]*[{]((\s)?(\d+)[%](\s)?[{](\s)?(transform):(\s)(translate)[(](\d+)px(\s)?,(\s)?(\d+)px[)]\s+(rotate)[(](\d+)deg[)][;](\s)?[}][(\s)?]*)*[*(\s)?][}](\s)?)*$" required oninput="setCustomValidity('')" >
 </textarea>
-<button id="codecss" name="codecss">
+<button id="codecss" name="codecss" type="button">
 	code css pour les images 
 </button>
 	<div class="mytextareas">

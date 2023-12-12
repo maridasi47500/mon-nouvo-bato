@@ -56,9 +56,9 @@ class Route():
         self.set_redirect("/")
         return self.render_figure.render_redirect()
     def codehtml(self,search):
-        myparam=self.get_post_data()(params=("filename","mytextarea"))
+        myparam=self.get_post_data()(params=("filename","mytextarea","mytextareacss"))
         print("tags")
-        x=Fichier("./mespages",myparam["filename"]).ecrire(myparam["mytextarea"])
+        x=Fichier("./mespages",myparam["filename"]).ecrire(myparam["mytextarea"]+"<style>"+myparam["mytextareacss"]+"</style>")
         self.set_json("{\"redirect\":false,\"ecritfichier\":true}")
         return self.render_figure.render_json()
     def pic(self,search):

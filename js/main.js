@@ -9,13 +9,13 @@ function off() {
 	  document.getElementById("overlay").style.display = "none";
 }
 $(function(){
-	$("#mycss").click(function(){
-	$("#ajouter").html("ajouter à "+$(this).val()+"% une rotation ou une translation");
+	$("#ajouter").click(function(){
 		var x="";
 		x+="@keyframes mycssrotating {";
 		x+=$("#mycss").val()+"% { transform: translate(-10px, -10px) rotate(0deg); }"
 		x+="}";
-  var textarea=document.getElementById("mytextareacss");
+  var textarea=document.getElementById("mytextarea");
+  var textareacss=document.getElementById("mytextareacss");
   var mytext=document.getElementById("mytext");
     var start = textarea.selectionStart;
 
@@ -23,22 +23,22 @@ $(function(){
     var finish = textarea.selectionEnd;
 
     // Obtain the selected text
-    var sel = textarea.value.substring(start, finish);
+    var sel = textareacss.value.substring(start, finish);
     var othertext = mytext.innerHTML;
-  let first = textarea.value.slice(0, textarea.selectionStart);
-  let rest = textarea.value.slice(textarea.selectionEnd, textarea.value.length);
+  let first = textareacss.value.slice(0, textareacss.selectionStart);
+  let rest = textareacss.value.slice(textareacss.selectionEnd, textareacss.value.length);
 
-  textarea.value = first + mybegin+"valeur"+myend + rest;
+  textareacss.value = first + x + rest;
 	$(".right").html(textarea.value+"<style>"+textareacss.value+"</style>");
 
   // Bonus: place cursor behind replacement
-	textarea.focus();
-  textarea.selectionStart = (first + mybegin).length;
-  textarea.selectionEnd = (first + mybegin+"valeur").length;
+	textareacss.focus();
+  textareacss.selectionStart = (first + mybegin).length;
+  textareacss.selectionEnd = (first + mybegin+"valeur").length;
 	});
-	$("#mycss").input(function(){
+	$("#mycss")[0].onchange=function(){
 	$("#ajouter").html("ajouter à "+$(this).val()+"% une rotation ou une translation");
-	});
+	};
 	$("#mytextarea").keyup(function(){
 var textarea=document.getElementById("mytextarea");
 var textareacss=document.getElementById("mytextareacss");
